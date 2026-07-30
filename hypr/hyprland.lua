@@ -58,6 +58,14 @@ hl.monitor({
     scale    = 1,
 })
 
+hl.monitor({
+    output   = "HDMI-A-1",
+    mode     = "1024x768@60.0",
+    position = "1920x0",
+    scale    = 1.0,
+    mirror   = "eDP-1"
+})
+
 -- Configs
 require("hyprland.env")
 require("hyprland.general")

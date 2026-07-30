@@ -223,3 +223,42 @@ create_bind(
         " -a 'Shell' -A 'Test1=I got it!' -A 'Test2=Another action'"
     )
 )
+
+-- 1. Create a helper function to handle the math natively
+local function change_zoom(step)
+    -- Grab the current zoom factor directly from memory (defaults to 1.0)
+    local current_zoom = hl.get_config("cursor:zoom_factor") or 1.0
+    local new_zoom = current_zoom + step
+    
+    -- Prevent zooming out past the default 1.0 scale
+    if new_zoom < 1.0 then
+        new_zoom = 1.0
+    end
+    
+    -- Apply the new zoom factor
+    hl.config({
+        cursor = {
+            zoom_factor = new_zoom
+        }
+    })
+end
+
+-- 2. Create a quick helper to reset the zoom
+local function reset_zoom()
+    hl.config({ cursor = { zoom_factor = 1.0 } })
+end
+
+-- 3. Zoom In (The { repeating = true } flag replaces the old 'binde' keyword)
+hl.bind("SUPER + equal", function() change_zoom(0.1) end, { repeating = true })
+hl.bind("SUPER + KP_ADD", function() change_zoom(0.1) end, { repeating = true })
+
+-- 4. Zoom Out
+hl.bind("SUPER + minus", function() change_zoom(-0.1) end, { repeating = true })
+hl.bind("SUPER + KP_SUBTRACT", function() change_zoom(-0.1) end, { repeating = true })
+
+-- 5. Zoom Reset
+hl.bind("SUPER + SHIFT + mouse_up", reset_zoom)
+hl.bind("SUPER + SHIFT + mouse_down", reset_zoom)
+hl.bind("SUPER + SHIFT + minus", reset_zoom)
+hl.bind("SUPER + SHIFT + KP_SUBTRACT", reset_zoom)
+hl.bind("SUPER + SHIFT + 0", reset_zoom)
