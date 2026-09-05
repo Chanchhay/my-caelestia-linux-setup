@@ -8,7 +8,7 @@ return {
     -- Apps
     terminal                   = "foot",
     browser                    = "firefox",
-    editor                     = "codium",
+    editor                     = "code",
     fileExplorer               = "thunar",
     audioSettings              = "pwvucontrol",
 
@@ -50,8 +50,8 @@ return {
     -- Misc
     volumeStep                 = 10,
     volumeMax                  = 100,
-    cursorTheme                = "sweet-cursors",
-    cursorSize                 = 24,
+    cursorTheme                = "Bibata-Modern-Ice",
+    cursorSize                 = 50,
     sleepGestureCmd            = "systemctl suspend-then-hibernate",
 
     ------------------
