@@ -54,6 +54,7 @@ return {
     cursorTheme                = "Bibata-Modern-Ice",
     cursorSize                 = 50,
     sleepGestureCmd            = "systemctl suspend-then-hibernate",
+    specialWsCloseAny          = true,
 
     ------------------
     ---- KEYBINDS ----
